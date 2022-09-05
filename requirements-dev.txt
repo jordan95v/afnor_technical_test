@@ -4,3 +4,4 @@ pytest
 pytest-mock
 pytest-django
 pytest-cov
+pytest-asyncio
