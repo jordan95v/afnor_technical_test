@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.shortcuts import redirect
+from apps.api.views import AllRecordView, RecordView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("get/<str:numdos>/", RecordView.as_view(), name="single_get"),
+    path("get/", AllRecordView.as_view(), name="get_all"),
 ]
