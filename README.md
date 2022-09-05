@@ -25,7 +25,8 @@ Then you can lauch the development server and have fun with the code !
 
 ## Workflow
 
-To upload the csv simply do as follow:
+Since we where given a CSV to construct the database, i did a custom command that makes the insertion.
+To upload the csv and fill the database simply do as follow:
 
 ```bash
 (venv)your/repository> python manage.py insert_db <path_to_csv_file>
