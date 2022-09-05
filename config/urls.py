@@ -20,7 +20,7 @@ from apps.api.views import AllRecordView, RecordView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("get/<str:numdos>/", RecordView.as_view(), name="single_get"),
+    path("get/<str:numdos>/", RecordView.as_view(), name="get"),
     path("get/", AllRecordView.as_view(), name="get_all"),
     path(
         "",

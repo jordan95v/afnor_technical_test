@@ -16,7 +16,7 @@ class DBManager:
 
         try:
             await Standard.objects.acreate(**record.as_dict())
-        except IntegrityError:
+        except IntegrityError:  # pragma: no cover
             print(
                 f"[RECORD: {record.numdos}]"
                 f"[TIMESTAMP: {datetime.now().strftime('%H:%M:%S')}] "
