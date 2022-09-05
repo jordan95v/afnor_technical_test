@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Any
 import pytest
-from apps.api.utils.manager import CSVManager, CSVRecord
+from apps.api.utils.csv_manager import CSVManager, CSVRecord
 
 
 class TestCSVRecord:
