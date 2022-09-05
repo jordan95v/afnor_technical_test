@@ -4,6 +4,8 @@ from django.db.utils import IntegrityError
 from apps.api.models import Standard
 from apps.api.utils.csv_manager import CSVRecord
 
+__all__: list[str] = ["DBManager"]
+
 
 @dataclass
 class DBManager:
