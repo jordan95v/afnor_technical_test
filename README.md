@@ -41,6 +41,8 @@ As the database is already given, you have two options:
 - either you clone the repo ([example](#installation)),
 - or you can use docker with the command : `docker compose up`, this is gonna create a container with everything inside.
 
+Then you juste have to go to your [localhost](http://127.0.0.1:8000)
+
 ## Route
 
 ### get/
