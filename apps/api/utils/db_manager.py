@@ -1,7 +1,5 @@
-from curses.ascii import isalpha
 from dataclasses import dataclass
 from datetime import datetime
-from django.core.exceptions import ObjectDoesNotExist
 from django.db.utils import IntegrityError
 from apps.api.models import Standard, Support
 from apps.api.utils.csv_manager import CSVRecord
