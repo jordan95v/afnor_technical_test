@@ -48,6 +48,6 @@ class AllRecordView(generic.View):
                 )
 
         except MultiValueDictKeyError:
-            data = dict(error="No page requested.")
+            data = [dict(error="No page requested.")]
         finally:
             return JsonResponse(data=data, safe=False)
