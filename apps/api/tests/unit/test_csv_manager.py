@@ -18,6 +18,18 @@ class TestCSVRecord:
         assert isinstance(record, CSVRecord)
         assert record.numdos == "hello"
 
+    def test_as_dict(self):
+        record: CSVRecord = CSVRecord(
+            numdos="hello",
+            numdos_vl="my",
+            ancart="name",
+            channel="is",
+            stage="50",
+            ve="cents",
+            format="yo",
+        )
+        assert isinstance(record.as_dict(), dict)
+
 
 @pytest.mark.asyncio
 class TestCSVManager:

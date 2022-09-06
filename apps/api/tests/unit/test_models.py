@@ -22,12 +22,11 @@ class TestStandard:
             ancart="LNEN50289-1-3",
             channel="FRA",
             stage="hello",
-            format="PDFC",
         )
         with pytest.raises(ValueError):
             await Standard.objects.acreate(**given)
 
-    async def test_unique(self) -> None:
-        await Standard.objects.acreate(**STANDARD_DICT)
-        with pytest.raises(IntegrityError):
-            await Standard.objects.acreate(**STANDARD_DICT)
+    # async def test_unique(self) -> None:
+    #     await Standard.objects.acreate(**STANDARD_DICT)
+    #     with pytest.raises(IntegrityError):
+    #         await Standard.objects.acreate(**STANDARD_DICT)

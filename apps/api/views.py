@@ -46,7 +46,6 @@ class AllRecordView(generic.View):
                         ],
                     )
                 )
-
         except MultiValueDictKeyError:
             data = [dict(error="No page requested.")]
         finally:

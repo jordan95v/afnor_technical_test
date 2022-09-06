@@ -15,7 +15,7 @@ def client() -> Client:
 class TestView:
     def test_get_all_error(self, client: Client):
         res: JsonResponse = client.get("/get/")
-        assert "error" in res.json()
+        assert "error" in res.json()[0]
 
     def test_get_all(self, client: Client):
         res: JsonResponse = client.get("/get/", data=dict(page=1))
@@ -29,5 +29,5 @@ class TestView:
 
     def test_get_single_fail(self, client: Client):
         Standard.objects.create(numdos="FA010203")
-        res: JsonResponse = client.get("/get/hello/")
+        res: JsonResponse = client.get("/get/jojo/")
         assert "error" in res.json()

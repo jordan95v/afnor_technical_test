@@ -9,7 +9,6 @@ STANDARD_DICT: dict[str, Any] = dict(
     ancart="LNEN50289-1-3",
     channel="FRA",
     stage=60.62,
-    format="PDFC",
 )
 
 RECORD: CSVRecord = CSVRecord(
