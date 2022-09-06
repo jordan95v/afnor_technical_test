@@ -1,12 +1,11 @@
-FROM python:3.10.6:alpine
+FROM python:3.10-slim
+ENV PYTHONUNBUFFERED=1
+COPY . /opt/afnor_api/
+WORKDIR /opt/afnor_api/
+EXPOSE 8000
 
-# COPY . /opt/afnor_api
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt 
+RUN python manage.py migrate
 
-# WORKDIR /opt/afnor_api
-
-# RUN py -m venv venv && \
-#     ./venv/bin/activate && \
-#     pip install -r requirements.txt && \
-#     python manage.py migrate
-
-# ENTRYPOINT ["python", 'manage.py', 'runserver']
+CMD [ "python", "./manage.py", "runserver", "0.0.0.0:8000" ]

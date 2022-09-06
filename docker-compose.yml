@@ -1,6 +1,7 @@
-version: 3.9
+version: "3.9"
 services:
   api:
     build: .
-    ports: -8000:8000
+    ports: 
+      - "8000:8000"
     container_name: afnor_technical_test
