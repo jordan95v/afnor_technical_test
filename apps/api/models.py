@@ -10,4 +10,10 @@ class Standard(models.Model):
     channel: models.CharField = models.CharField(max_length=3, null=True, blank=True)
     stage: models.FloatField = models.FloatField(null=True, blank=True)
     ve: models.CharField = models.CharField(max_length=3, null=True, blank=True)
+
+
+class Support(models.Model):
+    standard: models.ForeignKey = models.ForeignKey(
+        Standard, on_delete=models.CASCADE, related_name="support"
+    )
     format: models.CharField = models.CharField(max_length=5, null=True, blank=True)

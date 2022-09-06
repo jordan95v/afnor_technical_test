@@ -1,10 +1,11 @@
 from typing import Any
 from django.views import generic
-from django.http import HttpRequest, JsonResponse, HttpResponseNotFound
+from django.http import HttpRequest, JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.forms.models import model_to_dict
 from django.utils.datastructures import MultiValueDictKeyError
-from apps.api.models import Standard
+from asgiref.sync import async_to_sync
+from apps.api.models import Standard, Support
 
 # Create your views here.
 
@@ -18,7 +19,11 @@ class RecordView(generic.View):
         except ObjectDoesNotExist:
             data = dict(error="Object does not exists.")
         else:
-            data = dict(content=model_to_dict(standard))
+            standard_dict: dict[str, Any] = model_to_dict(standard)
+            standard_dict["supports"] = [
+                model_to_dict(support) async for support in standard.support.all()
+            ]
+            data = dict(content=standard_dict)
         finally:
             return JsonResponse(data=data, safe=False)
 
@@ -28,13 +33,20 @@ class AllRecordView(generic.View):
         standards: list[Standard] = [
             standard async for standard in Standard.objects.all()
         ]
-        data: dict[str, Any] | list[dict[str, str]]
+        data: list[dict[str, Any]] = []
         try:
             page: int = int(request.GET["page"])
-            data = [
-                model_to_dict(record)
-                for record in standards[(page - 1) * 100 : page * 100]
-            ]
+            for standard in standards[(page - 1) * 100 : page * 100]:
+                data.append(
+                    dict(
+                        standard=model_to_dict(standard),
+                        supports=[
+                            model_to_dict(support)
+                            async for support in standard.support.all()
+                        ],
+                    )
+                )
+
         except MultiValueDictKeyError:
             data = dict(error="No page requested.")
         finally:
