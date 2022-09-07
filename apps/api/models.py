@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 
+__all__: list[str] = ["Standard', 'Support"]
+
 
 class Standard(models.Model):
     numdos: models.CharField = models.CharField(max_length=8, unique=True)

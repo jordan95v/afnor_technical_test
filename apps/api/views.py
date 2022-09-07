@@ -4,10 +4,11 @@ from django.http import HttpRequest, JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.forms.models import model_to_dict
 from django.utils.datastructures import MultiValueDictKeyError
-from asgiref.sync import async_to_sync
-from apps.api.models import Standard, Support
+from apps.api.models import Standard
 
 # Create your views here.
+
+__all__: list[str] = ["RecordView", "AllRecordView"]
 
 
 class RecordView(generic.View):
